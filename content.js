@@ -10,6 +10,14 @@
 
 window.SITE = {
 
+  /* ---------- COLOUR THEME ----------
+     "emerald" = Royal Emerald & Metallic Gold
+     "forest"  = Racing Green & Antique Gold
+     "jade"    = Bottle Green & Champagne Gold          */
+  theme: "emerald",
+
+  /* TIP: wrap words in *stars* in any title to make them gold. */
+
   /* ---------- BRAND ---------- */
   brand: {
     name: "BHK World",
@@ -84,7 +92,7 @@ window.SITE = {
   /* ---------- THE PROCESS (add, remove or reorder steps freely) ---------- */
   process: {
     eyebrow: "Our process",
-    title: "How BHK World works",
+    title: "How *BHK World* works",
     intro: "A clear, structured journey — so you always know what happens next.",
     steps: [
       {
@@ -129,7 +137,7 @@ window.SITE = {
   /* ---------- SERVICES ---------- */
   services: {
     eyebrow: "Our services",
-    title: "Premium & luxury real estate, end to end",
+    title: "Premium & *luxury* real estate, end to end",
     intro: "Homes, commercial searches and exclusive off-market deals for discerning clients in India & Dubai.",
     items: [
       { icon: "home",     title: "Luxury homes at lowest market rates", text: "Signature penthouses, duplexes and villas at prime locations." },
@@ -144,7 +152,7 @@ window.SITE = {
   /* ---------- OUR EDGE ---------- */
   why: {
     eyebrow: "Our edge",
-    title: "Advice you can trust, access you won't find elsewhere",
+    title: "Advice you can *trust*, access you won't find elsewhere",
     items: [
       { title: "RERA-compliant developers",   text: "Assurance of regulatory compliance and complete transparency." },
       { title: "Legacy developers",           text: "We work with developers who have proven track records." },
@@ -157,7 +165,7 @@ window.SITE = {
   /* ---------- QUESTIONS & ANSWERS ---------- */
   faq: {
     eyebrow: "FAQ",
-    title: "Questions, answered",
+    title: "Questions, *answered*",
     items: [
       { q: "Which locations does BHK World cover?", a: "We cover the Thane–Mumbai Metropolitan Region, Pune and Dubai, plus second homes in Alibaug and Lonavala." },
       { q: "Do you only deal in luxury homes?", a: "We specialise in premium and luxury residences, and we also handle commercial searches and investor advisory." },
@@ -169,7 +177,7 @@ window.SITE = {
 
   /* ---------- FINAL CALL-TO-ACTION ---------- */
   cta: {
-    title: "Let's find your next property.",
+    title: "Let's find your next *property.*",
     text: "Talk to Anand Khanvilkar or Jyoti Kale from the BHK World team.",
   },
 };

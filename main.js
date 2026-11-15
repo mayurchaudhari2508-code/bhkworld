@@ -37,8 +37,13 @@
   };
   const icon = (n) => ICONS[n] || ICONS.spark;
 
-  /* ---------- FILL SIMPLE TEXT ---------- */
-  $$("[data-bind]").forEach((el) => (el.textContent = get(el.dataset.bind) ?? ""));
+  /* ---------- THEME (content.js -> theme, or ?theme= in the address for previews) ---------- */
+  const themeParam = new URLSearchParams(location.search).get("theme");
+  document.documentElement.dataset.theme = themeParam || S.theme || "emerald";
+
+  /* ---------- FILL SIMPLE TEXT (*word* becomes gold) ---------- */
+  const rich = (t) => esc(t).replace(/\*([^*]+)\*/g, '<em class="gold-text">$1</em>');
+  $$("[data-bind]").forEach((el) => (el.innerHTML = rich(get(el.dataset.bind) ?? "")));
   $$("[data-icon]").forEach((el) => (el.innerHTML = icon(el.dataset.icon)));
   $("#year").textContent = new Date().getFullYear();
 
@@ -137,11 +142,13 @@
     const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
     const W = 1600, H = 600;
     const layers = [
-      { speed: 0.08, count: 22, min: 150, max: 330, fill: "#15301f", win: 0.25 },
-      { speed: 0.18, count: 16, min: 200, max: 440, fill: "#10261a", win: 0.45 },
-      { speed: 0.32, count: 11, min: 240, max: 540, fill: "#0a1a12", win: 0.7 },
+      { speed: 0.08, count: 22, min: 150, max: 330, fill: "--sky-1", win: 0.25 },
+      { speed: 0.18, count: 16, min: 200, max: 440, fill: "--sky-2", win: 0.45 },
+      { speed: 0.32, count: 11, min: 240, max: 540, fill: "--sky-3", win: 0.7 },
     ];
     const host = $("#skyline");
+    const css = getComputedStyle(document.documentElement);
+    layers.forEach((L) => (L.fill = css.getPropertyValue(L.fill).trim() || "#0c2a20"));
     layers.forEach((L) => {
       let x = -20, out = "";
       const avg = W / L.count;
