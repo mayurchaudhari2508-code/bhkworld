@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>BHK World — Luxury Real Estate Solutions, India &amp; Dubai</title>
+  <meta name="description" content="BHK World — premium homes, commercial assets and off-market deals across Thane, Mumbai, Pune and Dubai. Where families find homes &amp; investors build legacies." />
+  <meta name="theme-color" content="#0b1a13" />
+
+  <!-- Link preview (WhatsApp / Instagram / Facebook) -->
+  <meta property="og:title" content="BHK World — Luxury Real Estate Solutions, India &amp; Dubai" />
+  <meta property="og:description" content="Where families find homes &amp; investors build legacies. Thane · Mumbai · Pune · Dubai." />
+  <meta property="og:type" content="website" />
+  <!-- <meta property="og:image" content="https://YOUR-SITE/preview.jpg" />  add a 1200x630 image later -->
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23143224'/%3E%3Cpath d='M14 34 32 18l18 16v14H14z' fill='none' stroke='%23e6d38e' stroke-width='4' stroke-linejoin='round'/%3E%3Crect x='28' y='36' width='8' height='12' fill='%23e6d38e'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <a href="#top" class="logo" aria-label="BHK World home">
+      <span class="logo-badge" data-bind="brand.shortName"></span>
+      <span class="logo-text" data-bind="brand.name"></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#process">Process</a>
+      <a href="#services">Services</a>
+      <a href="#founder">Founder</a>
+      <a href="#why">Our edge</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-small btn-gold" data-wa href="#">Talk to us</a>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-glow" data-speed="-0.15" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow hero-eyebrow" data-bind="hero.eyebrow"></p>
+        <h1 class="hero-title" id="heroTitle"></h1>
+        <p class="hero-sub" data-bind="hero.subtitle"></p>
+        <div class="hero-actions">
+          <a class="btn btn-gold magnetic" data-wa href="#"><i data-icon="whatsapp"></i><span data-bind="hero.primaryButton"></span></a>
+          <a class="btn btn-ghost magnetic" href="#process"><span data-bind="hero.secondaryButton"></span><i data-icon="arrow"></i></a>
+        </div>
+      </div>
+      <div class="skyline" id="skyline" aria-hidden="true"></div>
+      <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="container">
+        <p class="eyebrow reveal" data-bind="about.eyebrow"></p>
+        <p class="statement" id="statement"></p>
+        <div class="stats" id="stats"></div>
+      </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section class="section founder" id="founder">
+      <div class="container founder-grid">
+        <figure class="founder-photo reveal" data-reveal="left" id="founderPhoto"><div class="founder-frame"></div></figure>
+        <div class="founder-body">
+          <p class="eyebrow reveal" data-bind="founder.eyebrow"></p>
+          <h2 class="h2 reveal" data-bind="founder.name"></h2>
+          <p class="founder-role reveal" data-bind="founder.role"></p>
+          <ul class="founder-list" id="founderList"></ul>
+          <blockquote class="founder-quote reveal"><span data-bind="founder.quote"></span></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section process" id="process">
+      <div class="container process-grid">
+        <div class="process-head">
+          <p class="eyebrow reveal" data-bind="process.eyebrow"></p>
+          <h2 class="h2 reveal" data-bind="process.title"></h2>
+          <p class="lead reveal" data-bind="process.intro"></p>
+          <div class="process-counter reveal" aria-hidden="true">
+            <span class="pc-now" id="pcNow">01</span><span class="pc-sep">/</span><span class="pc-total" id="pcTotal">06</span>
+          </div>
+        </div>
+        <div class="timeline-wrap" id="timelineWrap">
+          <div class="timeline-track" aria-hidden="true"><div class="timeline-fill" id="timelineFill"></div></div>
+          <ol class="timeline" id="timeline"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal" data-bind="services.eyebrow"></p>
+          <h2 class="h2 reveal" data-bind="services.title"></h2>
+          <p class="lead reveal" data-bind="services.intro"></p>
+        </div>
+        <div class="cards" id="services-list"></div>
+        <div class="showcase">
+          <figure class="reveal"><img src="assets/villa.jpg" alt="Luxury villa with pool" loading="lazy" data-pspeed="0.12" /><figcaption>Villas</figcaption></figure>
+          <figure class="reveal" style="--delay:.1s"><img src="assets/interior.jpg" alt="Luxury apartment interior" loading="lazy" data-pspeed="0.12" /><figcaption>Luxury residences</figcaption></figure>
+          <figure class="reveal" style="--delay:.2s"><img src="assets/towers.jpg" alt="Premium high-rise towers" loading="lazy" data-pspeed="0.12" /><figcaption>Premium towers</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="section why" id="why">
+      <div class="why-bg" data-speed="0.12" aria-hidden="true"></div>
+      <div class="container why-grid">
+        <div>
+          <p class="eyebrow reveal" data-bind="why.eyebrow"></p>
+          <h2 class="h2 reveal" data-bind="why.title"></h2>
+        </div>
+        <ul class="why-list" id="why-list"></ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <div class="container faq-grid">
+        <div>
+          <p class="eyebrow reveal" data-bind="faq.eyebrow"></p>
+          <h2 class="h2 reveal" data-bind="faq.title"></h2>
+        </div>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta" id="contact">
+      <div class="container">
+        <div class="cta-card reveal" data-reveal="scale">
+          <div class="cta-orb" aria-hidden="true"></div>
+          <h2 class="h2" data-bind="cta.title"></h2>
+          <p class="lead" data-bind="cta.text"></p>
+          <div class="contact-grid" id="contact-grid"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="#top" class="logo">
+          <span class="logo-badge" data-bind="brand.shortName"></span>
+          <span class="logo-text" data-bind="brand.name"></span>
+        </a>
+        <p class="footer-tag" data-bind="brand.tagline"></p>
+      </div>
+      <div class="footer-meta">
+        <p data-bind="contact.region"></p>
+        <p class="footer-addr" data-bind="contact.address"></p>
+        <p class="footer-rera" data-bind="brand.rera"></p>
+        <p class="copy">© <span id="year"></span> <span data-bind="brand.name"></span>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a class="wa-float" data-wa href="#" aria-label="Chat on WhatsApp"><i data-icon="whatsapp"></i></a>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
