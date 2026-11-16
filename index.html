@@ -34,6 +34,7 @@
       <a href="#process">Process</a>
       <a href="#services">Services</a>
       <a href="#founder">Founder</a>
+      <a href="#media" id="navMedia" hidden>Watch</a>
       <a href="#why">Our edge</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -118,6 +119,22 @@
       </div>
     </section>
 
+    <!-- VIDEOS & REELS (filled from content.js -> media; hidden while empty) -->
+    <section class="section media" id="media" hidden>
+      <div class="container">
+        <div class="media-head">
+          <div class="section-head">
+            <p class="eyebrow reveal" data-bind="media.eyebrow"></p>
+            <h2 class="h2 reveal" data-bind="media.title"></h2>
+            <p class="lead reveal" data-bind="media.intro"></p>
+          </div>
+          <div class="media-follow reveal" id="mediaFollow"></div>
+        </div>
+        <div class="yt-grid" id="ytGrid"></div>
+        <div class="reel-row" id="reelRow"></div>
+      </div>
+    </section>
+
     <!-- WHY -->
     <section class="section why" id="why">
       <div class="why-bg" data-speed="0.12" aria-hidden="true"></div>
@@ -162,6 +179,7 @@
           <span class="logo-text" data-bind="brand.name"></span>
         </a>
         <p class="footer-tag" data-bind="brand.tagline"></p>
+        <div class="footer-social" id="footerSocial"></div>
       </div>
       <div class="footer-meta">
         <p data-bind="contact.region"></p>

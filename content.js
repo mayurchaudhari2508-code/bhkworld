@@ -37,6 +37,8 @@ window.SITE = {
     email: "bhkworldofficial@gmail.com",
     instagram: "",                            // e.g. "https://www.instagram.com/bhkworld"
     instagramHandle: "",                      // e.g. "@bhkworld"
+    youtube: "",                              // e.g. "https://www.youtube.com/@bhkworld"
+    youtubeHandle: "",                        // e.g. "@bhkworld"
     region: "Thane – Mumbai Metropolitan Region (MMR)",
     address: "312, One Wagle, Road No. 16, Opp. Sunrise Business Park, Wagle Estate, Thane West, Maharashtra 400604",
     mapLink: "https://www.google.com/maps/search/?api=1&query=One+Wagle+Road+No+16+Opp+Sunrise+Business+Park+Wagle+Estate+Thane",
@@ -146,6 +148,23 @@ window.SITE = {
       { icon: "building", title: "Commercial search",      text: "Customised searches in Thane, Mumbai, Pune & Dubai." },
       { icon: "spark",    title: "Trophy commercial assets", text: "Landmark commercial properties for discerning investors." },
       { icon: "palm",     title: "Second homes",           text: "Luxury second homes in Alibaug and Lonavala." },
+    ],
+  },
+
+  /* ---------- VIDEOS & REELS (YouTube + Instagram) ----------
+     Just paste links. The section hides itself while everything is empty.
+     • videos: YouTube links (youtube.com/watch?v=…, youtu.be/…, youtube.com/shorts/…)
+               Add a title like this:  { url: "https://youtu.be/XXXX", title: "Site visit — Thane" }
+               or just the link:       "https://youtu.be/XXXX",
+     • reels:  Instagram reel or post links (instagram.com/reel/… or instagram.com/p/…)
+     The "Subscribe" / "Follow" buttons use youtube and instagram in CONTACT above. */
+  media: {
+    eyebrow: "Watch & follow",
+    title: "See *BHK World* in action",
+    intro: "Property walkthroughs, site visits and market insights — straight from our YouTube and Instagram.",
+    videos: [
+    ],
+    reels: [
     ],
   },
 

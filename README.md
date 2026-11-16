@@ -21,11 +21,11 @@ It costs nothing to host and you can edit it at any time.
 
 Common edits:
 - **Phone, WhatsApp, email, address:** the `contact` section.
-- **Instagram:** fill in `instagram` and `instagramHandle` and an Instagram card appears automatically.
+- **Instagram & YouTube:** fill in `instagram` / `youtube` in `contact` for the Follow and Subscribe buttons. Paste video and reel links into `media` → `videos` and `reels`; the "Watch & follow" section appears by itself.
 - **Numbers (10,231+ leads, etc.):** the `stats` section.
 - **Process steps / services / FAQ:** add or delete a `{ ... },` block to add or remove an item.
 - **Founder photo:** replace `assets/founder.jpg` with a new photo that has the same name.
-- **Icons** you can use: `chat, search, car, handshake, file, key, home, building, rupee, shield, chart, spark, lock, palm, pin`.
+- **Icons** you can use: `chat, search, car, handshake, file, key, home, building, rupee, shield, chart, spark, lock, palm, pin, youtube, instagram`.
 
 ## Publish for free (pick one)
 

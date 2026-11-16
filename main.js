@@ -32,6 +32,8 @@
     arrow: P('<path d="M5 12h14M13 6l6 6-6 6"/>'),
     phone: P('<path d="M21 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.1 4.2 2 2 0 0 1 3.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L7.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>'),
     mail: P('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'),
+    youtube: P('<rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor"/>'),
+    play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg>',
     instagram: P('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>'),
     whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.3A11.8 11.8 0 0 0 1.7 17.8L0 24l6.3-1.7A11.8 11.8 0 0 0 24 12a11.7 11.7 0 0 0-3.6-8.5z"/></svg>',
   };
@@ -108,6 +110,56 @@
         <div><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></div></li>`)
     .join("");
 
+  /* ---------- VIDEOS & REELS (YouTube + Instagram) ---------- */
+  const M = S.media || {}, C0 = S.contact;
+  const ytId = (u) => (String(u).match(/(?:youtu\.be\/|[?&]v=|\/(?:shorts|embed|live)\/)([\w-]{11})/) || [])[1];
+  const igPath = (u) => (String(u).match(/instagram\.com\/(?:[\w.]+\/)?(p|reel|reels|tv)\/([\w-]+)/) || []);
+  const asItem = (v) => (typeof v === "string" ? { url: v } : v || {});
+  const vids = (M.videos || []).map(asItem).map((v) => ({ ...v, id: ytId(v.url), short: /\/shorts\//.test(v.url) })).filter((v) => v.id);
+  const reels = (M.reels || []).map(asItem).map((r) => { const m = igPath(r.url); return m[2] && { ...r, href: `https://www.instagram.com/${m[1] === "reels" ? "reel" : m[1]}/${m[2]}/` }; }).filter(Boolean);
+  const follow = [
+    C0.youtube && { i: "youtube", t: "Subscribe on YouTube", href: C0.youtube },
+    C0.instagram && { i: "instagram", t: "Follow on Instagram", href: C0.instagram },
+  ].filter(Boolean);
+
+  if (vids.length || reels.length || follow.length) {
+    $("#media").hidden = false;
+    $("#navMedia").hidden = !(vids.length || reels.length);
+    $("#mediaFollow").innerHTML = follow
+      .map((f, i) => `<a class="btn ${i ? "btn-ghost" : "btn-gold"} magnetic" href="${esc(f.href)}" target="_blank" rel="noopener"><i>${icon(f.i)}</i><span>${f.t}</span></a>`)
+      .join("");
+
+    // YouTube: a light thumbnail first, the real player loads only when tapped (keeps the page fast)
+    const ytCard = (v, i) => `<figure class="yt${v.short ? " short" : ""} reveal" style="--delay:${(i % 3) * 0.1}s">
+        <div class="yt-frame"><button class="yt-btn" data-yt="${v.id}" aria-label="Play ${esc(v.title || "video")}">
+          <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy" />
+          <span class="yt-play">${ICONS.play}</span>
+        </button></div>
+        ${v.title ? `<figcaption>${esc(v.title)}</figcaption>` : ""}</figure>`;
+    const wide = vids.filter((v) => !v.short), shorts = vids.filter((v) => v.short);
+    $("#ytGrid").innerHTML = wide.map(ytCard).join("");
+    $("#ytGrid").classList.toggle("feature", wide.length % 2 === 1 && wide.length > 1);
+    $$("#ytGrid, #reelRow").forEach((g) => g.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-yt]");
+      if (!b) return;
+      b.outerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    }));
+
+    // Reels row: YouTube Shorts + Instagram reels/posts (official Instagram embed)
+    $("#reelRow").innerHTML =
+      shorts.map(ytCard).join("") +
+      reels.map((r, i) => `<div class="ig${/\/reel\//.test(r.href) ? " is-reel" : ""} reveal" style="--delay:${(i % 3) * 0.1}s">
+          <iframe src="${esc(r.href)}embed/" title="Instagram post" loading="lazy" allowtransparency="true" allow="encrypted-media; fullscreen"></iframe>
+          <a class="ig-open" href="${esc(r.href)}" target="_blank" rel="noopener">${ICONS.instagram}<span>Open on Instagram</span></a></div>`).join("");
+  }
+
+  /* ---------- FOOTER SOCIAL ICONS ---------- */
+  $("#footerSocial").innerHTML = [
+    C0.instagram && ["instagram", "Instagram", C0.instagram],
+    C0.youtube && ["youtube", "YouTube", C0.youtube],
+    C0.whatsapp && ["whatsapp", "WhatsApp", waLink],
+  ].filter(Boolean).map(([i, t, h]) => `<a href="${esc(h)}" target="_blank" rel="noopener" aria-label="${t}">${icon(i)}</a>`).join("");
+
   /* ---------- FAQ ---------- */
   $("#faq-list").innerHTML = S.faq.items
     .map((f, i) => `<div class="faq-item reveal" style="--delay:${i * 0.06}s">
@@ -129,7 +181,8 @@
     { i: "phone", k: "Call", v: C.phone, href: `tel:${C.phoneLink}` },
     { i: "phone", k: "Call", v: C.phone2, href: `tel:${C.phone2Link}` },
     { i: "mail", k: "Email", v: C.email, href: `mailto:${C.email}` },
-    { i: "instagram", k: "Instagram", v: C.instagramHandle, href: C.instagram, ext: true },
+    { i: "instagram", k: "Instagram", v: C.instagram && (C.instagramHandle || "Follow us"), href: C.instagram, ext: true },
+    { i: "youtube", k: "YouTube", v: C.youtube && (C.youtubeHandle || "Watch our videos"), href: C.youtube, ext: true },
     { i: "pin", k: "Visit our office", v: C.address, href: C.mapLink, ext: true, wide: true },
   ].filter((c) => c.v);
   $("#contact-grid").innerHTML = contacts
