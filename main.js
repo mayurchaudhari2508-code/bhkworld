@@ -132,7 +132,8 @@
     // YouTube: a light thumbnail first, the real player loads only when tapped (keeps the page fast)
     const ytCard = (v, i) => `<figure class="yt${v.short ? " short" : ""} reveal" style="--delay:${(i % 3) * 0.1}s">
         <div class="yt-frame"><button class="yt-btn" data-yt="${v.id}" aria-label="Play ${esc(v.title || "video")}">
-          <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy" />
+          <img src="https://i.ytimg.com/vi/${v.id}/${v.short ? "oar2" : "maxresdefault"}.jpg" alt="" loading="lazy" decoding="async"
+            onload="if(this.naturalWidth<200)this.onerror()" onerror="this.onerror=this.onload=null;this.src='https://i.ytimg.com/vi/${v.id}/hqdefault.jpg'" />
           <span class="yt-play">${ICONS.play}</span>
         </button></div>
         <figcaption>${v.title ? `<span>${esc(v.title)}</span>` : ""}

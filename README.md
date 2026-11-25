@@ -8,7 +8,7 @@ It costs nothing to host and you can edit it at any time.
 | File | What it is |
 |---|---|
 | `content.js` | **All the text on the page.** This is the only file you normally edit. |
-| `assets/` | Photos (founder, villa, interior, towers, Dubai skyline). |
+| `assets/` | Photos and logo. villa, interior, towers and dubai are free Unsplash photos (unsplash.com/license, no credit needed). Replace any file with one of the same name to change it. |
 | `style.css` | Colours and design. The colours are at the very top. |
 | `main.js` | Builds the page and runs the scroll animations. No need to touch it. |
 | `index.html` | Page structure, plus the title shown in Google and link previews. |
