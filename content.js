@@ -37,8 +37,8 @@ window.SITE = {
     email: "bhkworldofficial@gmail.com",
     instagram: "",                            // e.g. "https://www.instagram.com/bhkworld"
     instagramHandle: "",                      // e.g. "@bhkworld"
-    youtube: "",                              // e.g. "https://www.youtube.com/@bhkworld"
-    youtubeHandle: "",                        // e.g. "@bhkworld"
+    youtube: "https://www.youtube.com/@BHKWORLD_real_estate",                            // e.g. "https://www.youtube.com/@bhkworld"
+    youtubeHandle: "@BHKWORLD_real_estate",                      // e.g. "@bhkworld"
     region: "Thane – Mumbai Metropolitan Region (MMR)",
     address: "312, One Wagle, Road No. 16, Opp. Sunrise Business Park, Wagle Estate, Thane West, Maharashtra 400604",
     mapLink: "https://www.google.com/maps/search/?api=1&query=One+Wagle+Road+No+16+Opp+Sunrise+Business+Park+Wagle+Estate+Thane",
