@@ -35,8 +35,8 @@ window.SITE = {
     whatsapp: "919820802090",                 // WhatsApp number: country code + number, no + or spaces
     whatsappMessage: "Hi BHK World, I'd like to know more about your properties.",
     email: "bhkworldofficial@gmail.com",
-    instagram: "",                            // e.g. "https://www.instagram.com/bhkworld"
-    instagramHandle: "",                      // e.g. "@bhkworld"
+    instagram: "https://www.instagram.com/bhkworld_real_estate/",                          // e.g. "https://www.instagram.com/bhkworld"
+    instagramHandle: "@bhkworld_real_estate",                    // e.g. "@bhkworld"
     youtube: "https://www.youtube.com/@BHKWORLD_real_estate",                            // e.g. "https://www.youtube.com/@bhkworld"
     youtubeHandle: "@BHKWORLD_real_estate",                      // e.g. "@bhkworld"
     region: "Thane – Mumbai Metropolitan Region (MMR)",
