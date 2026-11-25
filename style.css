@@ -616,3 +616,13 @@ ol, ul { list-style: none; }
   .reel-row .ig { width: min(84vw, 340px); --igw: min(84vw, 340px); }
   .yt-play { width: 62px; height: 62px; margin: -31px 0 0 -31px; }
 }
+
+/* video captions + row labels */
+.yt figcaption { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.yt.short figcaption span { font-size: 16px; line-height: 1.35; }
+.row-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: clamp(50px, 6vw, 80px) 0 18px; padding-top: 22px; position: relative; }
+.row-head::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--gold-line); }
+.row-head h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.2vw, 30px); }
+.row-head + .reel-row { margin-top: 0; }
+.reel-row .yt.short { width: 260px; }
+@media (max-width: 640px) { .reel-row .yt.short { width: 62vw; } }

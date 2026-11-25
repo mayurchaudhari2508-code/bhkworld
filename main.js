@@ -135,19 +135,27 @@
           <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy" />
           <span class="yt-play">${ICONS.play}</span>
         </button></div>
-        ${v.title ? `<figcaption>${esc(v.title)}</figcaption>` : ""}</figure>`;
+        <figcaption>${v.title ? `<span>${esc(v.title)}</span>` : ""}
+          <a class="ig-open" href="${esc(v.url)}" target="_blank" rel="noopener">${ICONS.youtube}<span>Watch on YouTube</span></a></figcaption></figure>`;
     const wide = vids.filter((v) => !v.short), shorts = vids.filter((v) => v.short);
     $("#ytGrid").innerHTML = wide.map(ytCard).join("");
     $("#ytGrid").classList.toggle("feature", wide.length % 2 === 1 && wide.length > 1);
-    $$("#ytGrid, #reelRow").forEach((g) => g.addEventListener("click", (e) => {
+
+    // a small label + "see all" link above each swipe row
+    const rowHead = (label, href, linkText, ic) =>
+      `<div class="row-head reveal"><h3>${label}</h3>${href ? `<a class="ig-open" href="${esc(href)}" target="_blank" rel="noopener">${icon(ic)}<span>${linkText}</span></a>` : ""}</div>`;
+    $("#shortsHead").innerHTML = shorts.length ? rowHead("YouTube Shorts", C0.youtube, "See all on YouTube", "youtube") : "";
+    $("#reelsHead").innerHTML = reels.length ? rowHead("Instagram Reels", C0.instagram, "See all on Instagram", "instagram") : "";
+    $("#shortsRow").innerHTML = shorts.map(ytCard).join("");
+
+    $$("#ytGrid, #shortsRow").forEach((g) => g.addEventListener("click", (e) => {
       const b = e.target.closest("[data-yt]");
       if (!b) return;
       b.outerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
     }));
 
-    // Reels row: YouTube Shorts + Instagram reels/posts (official Instagram embed)
+    // Instagram reels/posts (official Instagram embed)
     $("#reelRow").innerHTML =
-      shorts.map(ytCard).join("") +
       reels.map((r, i) => `<div class="ig${/\/reel\//.test(r.href) ? " is-reel" : ""} reveal" style="--delay:${(i % 3) * 0.1}s">
           <iframe src="${esc(r.href)}embed/" title="Instagram post" loading="lazy" allowtransparency="true" allow="encrypted-media; fullscreen"></iframe>
           <a class="ig-open" href="${esc(r.href)}" target="_blank" rel="noopener">${ICONS.instagram}<span>Open on Instagram</span></a></div>`).join("");

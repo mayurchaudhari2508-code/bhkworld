@@ -163,8 +163,23 @@ window.SITE = {
     title: "See *BHK World* in action",
     intro: "Property walkthroughs, site visits and market insights — straight from our YouTube and Instagram.",
     videos: [
+      // full videos (shown large)
+      { url: "https://www.youtube.com/watch?v=a9TkYXDr_pk", title: "21-acre project in Thane, nearing possession — 2 BHK from ₹1.50 Cr*" },
+      { url: "https://www.youtube.com/watch?v=cVG2-E121rc", title: "Ready to move 2 BHK, OC received — Narang Privado, Pokhran Road" },
+      { url: "https://www.youtube.com/watch?v=zELsub1IrLk", title: "Piramal Vaikunth Vidhaan 3 BHK — pay 9.90% now" },
+      // shorts (shown in a swipe row)
+      { url: "https://www.youtube.com/shorts/GR2PAFVTE6U", title: "Narang Privado — 2 & 3 BHK, OC received" },
+      { url: "https://www.youtube.com/shorts/MF35-mp6wPE", title: "2 BHK or 3 BHK? How to decide" },
+      { url: "https://www.youtube.com/shorts/xqTDafPtHjk", title: "Kalpataru ParkCity 4 BHK — 10:90 plan" },
+      { url: "https://www.youtube.com/shorts/DEfvqhSOn6k", title: "Thane's big transformation" },
+      { url: "https://www.youtube.com/shorts/_KhZS-z1GrE", title: "Why Thane's affluent families are watching" },
     ],
     reels: [
+      "https://www.instagram.com/reel/DgIUxifo46o/",
+      "https://www.instagram.com/reel/DcVv_96o2hM/",
+      "https://www.instagram.com/reel/DeUCrsYtfFz/",
+      "https://www.instagram.com/reel/Dft_XFQICBb/",
+      "https://www.instagram.com/reel/DfWGoSvIzid/",
     ],
   },
 
